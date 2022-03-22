@@ -1,0 +1,52 @@
+
+body, input, select, textarea {
+    font-family: "system-ui";
+    font-size: 15pt;
+    font-weight: 300;
+    line-height: 1.75em;
+    background-color: lightskyblue
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1em;
+    margin: auto;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: black;
+    margin-top: 2%;
+    font-size: 4.5em;
+    padding: 2%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .st {
+ text-align: center;
+  font-size: 2.6em;
+  font-weight: 700;
+  align-items: center;
+  color: cornflowerblue;
+  padding: 2%;
+  width: 45%;
+  margin: auto;
+  }
+  .carroussel {
+    box-shadow: 7px 4px 7px 5px grey;
+  }   
+    
+  .items {
+    display: flex;
+    position: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 2%;
+    text-align: center;
+  }
+  
+  .item-content {
+    margin: auto;
+  }
+  
+  

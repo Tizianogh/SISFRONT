@@ -3,14 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PhonesModule } from './modules/phones/phones.module';
+import { ComputerModule } from './modules/computer/computer.module';
+import { StockageModule } from './modules/stockage/stockage.module';
+import { HomeComponent } from './home/home.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PhonesModule,
+    ComputerModule,
+    StockageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
