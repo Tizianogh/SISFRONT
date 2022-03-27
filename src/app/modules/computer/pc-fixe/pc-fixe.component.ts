@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/article';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-pc-fixe',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PcFixeComponent implements OnInit {
 
-  constructor() { }
+  articles: Array<Article> = [];
+
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.articleService.getArticleByCategory$("Fixe").subscribe(res => {
+      this.articles = res;
+    })
   }
 
 }

@@ -9,15 +9,17 @@ import { ComputerModule } from './modules/computer/computer.module';
 import { StockageModule } from './modules/stockage/stockage.module';
 import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ConnexionComponent
+    ConnexionComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     PhonesModule,
