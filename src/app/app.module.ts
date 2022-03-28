@@ -10,6 +10,7 @@ import { StockageModule } from './modules/stockage/stockage.module';
 import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HomeComponent,
     ConnexionComponent,
+    CreateArticleComponent,
   ],
   imports: [
     HttpClientModule,

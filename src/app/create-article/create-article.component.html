@@ -1,0 +1,35 @@
+<div class="container">
+    <form [formGroup]="articleForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="idTitre">Titre</label>
+            <input type="text" class="form-control" id="idTitre" placeholder="Titre" formControlName="titre" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="idPrix">Libelle</label>
+            <input type="text" class="form-control" id="idPrix" placeholder="Libelle" formControlName="libelle" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="idPrix">Prix</label>
+          <input type="number"  min="1" step="any" class="form-control" id="idPrix" placeholder="Prix" formControlName="prix" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="idCategory">State</label> 
+            <select id="idCategory" class="form-control" formControlName="categorie" required> 
+              <option selected>Choose...</option>
+              <option *ngFor="let category of categories " value={{category.uuidCategorie}} > {{category.libelle}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="idMarque">State</label> 
+            <select id="idMarque" class="form-control" formControlName="marque" required>
+              <option selected>Choose...</option>
+              <option *ngFor="let marque of marques " value={{marque.uuidMarque}} > {{marque.libelle}}</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="createArticle(articleForm)">Creer</button>
+      </form>
+</div>

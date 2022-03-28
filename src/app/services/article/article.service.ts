@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../src/environments/environment";
+import {environment} from "../../../../src/environments/environment";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { Article } from '../models/article';
+import { Article } from '../../models/article';
 
 
 
@@ -15,6 +15,12 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getArticleByCategory$ = (category: String) => <Observable<Array<Article>>>this.http.get<Array<Article>>(`${this.apiUrl}/${category}`).pipe(
+    tap(console.log),
+    catchError(this.handleError)
+  );
+  
+  createArticle$ = (article: Article) => <Observable<Article>>  this.http.post<Article>(`${this.apiUrl}/add`, article)
+  .pipe(
     tap(console.log),
     catchError(this.handleError)
   );

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/article';
-import { ArticleService } from 'src/app/services/article.service';
+import { ArticleService } from 'src/app/services/article/article.service';
 
 @Component({
   selector: 'app-pc-fixe',

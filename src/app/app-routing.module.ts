@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
 import { HomeComponent } from './home/home.component';
 import { AccessoiresPcComponent } from './modules/computer/accessoires-pc/accessoires-pc.component';
 import { PcFixeComponent } from './modules/computer/pc-fixe/pc-fixe.component';
@@ -24,9 +25,7 @@ const routes: Routes = [
   {path:'cle-usb', component:CleUsbComponent},
   {path:'disque-dur', component:DisqueDurComponent},
   {path:'accessoires-stockage', component:AccessoiresStockageComponent},
-  
-
-
+  {path: 'create-article', component:CreateArticleComponent}
 ];
 
 @NgModule({
