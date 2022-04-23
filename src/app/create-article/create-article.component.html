@@ -1,35 +1,61 @@
-<div class="container">
-    <form [formGroup]="articleForm">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="idTitre">Titre</label>
-            <input type="text" class="form-control" id="idTitre" placeholder="Titre" formControlName="titre" required>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="idPrix">Libelle</label>
-            <input type="text" class="form-control" id="idPrix" placeholder="Libelle" formControlName="libelle" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="idPrix">Prix</label>
-          <input type="number"  min="1" step="any" class="form-control" id="idPrix" placeholder="Prix" formControlName="prix" required>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="idCategory">State</label> 
-            <select id="idCategory" class="form-control" formControlName="categorie" required> 
-              <option selected>Choose...</option>
-              <option *ngFor="let category of categories " value={{category.uuidCategorie}} > {{category.libelle}}</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="idMarque">State</label> 
-            <select id="idMarque" class="form-control" formControlName="marque" required>
-              <option selected>Choose...</option>
-              <option *ngFor="let marque of marques " value={{marque.uuidMarque}} > {{marque.libelle}}</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="createArticle(articleForm)">Creer</button>
-      </form>
+<h1 class="text-center">Création article</h1>
+<br/>
+<div class="container square-box d-flex justify-content-center align-items-center">
+  <form [formGroup]="articleForm" class="row g-3 needs-validation" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="idTitre" class="form-label">Titre</label>
+
+      <input type="text" class="form-control" id="idTitre" placeholder="Titre" formControlName="titre"
+             [ngClass]="{ 'is-invalid': submitted && f.titre.errors }">
+    </div>
+    <div *ngIf="submitted && f.titre.errors" class="invalid-feedback">
+      <div *ngIf="f.titre.errors.required">Le titre est requis</div>
+      <div *ngIf="f.titre.errors.minlength">Le titre doit avoit au minimum 5 caractères</div>
+    </div>
+    <div class="mb-3">
+      <label for="idLibelle">Libelle</label>
+      <input type="text" class="form-control" id="idLibelle" placeholder="Libelle" formControlName="libelle"
+             [ngClass]="{ 'is-invalid': submitted && f.libelle.errors }">
+    </div>
+    <div *ngIf="submitted && f.libelle.errors" class="invalid-feedback">
+      <div *ngIf="f.libelle.errors.required">Le libellé est requis</div>
+      <div *ngIf="f.libelle.errors.minlength">Le libellé doit avoit au minimum 5 caractères</div>
+    </div>
+    <div class="mb-3">
+      <label for="idPrix">Prix</label>
+      <input type="number" min="1" step="any" class="form-control" id="idPrix" placeholder="Prix" formControlName="prix"
+             [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+    </div>
+    <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
+      <div *ngIf="f.prix.errors.required">Le prix est requis</div>
+      <div *ngIf="f.prix.errors.min">Le prix doit être égale à au moins 1</div>
+    </div>
+    <div class="mb-3">
+      <label for="idCategory">Type</label>
+      <select id="idCategory" class="form-select" formControlName="categorie"
+              [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }">
+        <option value=""></option>
+        <option *ngFor="let category of categories " value={{category.uuidCategorie}}> {{category.libelle}}</option>
+      </select>
+      <div *ngIf="submitted && f.categorie.errors" class="invalid-feedback">
+        <div *ngIf="f.categorie.errors.required">La catégorie est requise</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="idMarque">Marque</label>
+      <select id="idMarque" class="form-select" formControlName="marque"
+              [ngClass]="{ 'is-invalid': submitted && f.marque.errors }">
+        <option value=""></option>
+        <option *ngFor="let marque of marques " value={{marque.uuidMarque}}> {{marque.libelle}}</option>
+      </select>
+      <div *ngIf="submitted && f.marque.errors" class="invalid-feedback">
+        <div *ngIf="f.marque.errors.required">La marque est requise</div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary mr-1">Créer</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Reset</button>
+    </div>
+  </form>
 </div>
+

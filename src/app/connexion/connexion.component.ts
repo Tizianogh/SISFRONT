@@ -27,15 +27,6 @@ export class ConnexionComponent implements OnInit {
       mdp: connexionForm.value.pass
     }
 
-   /* this.utilisateurService.login$(connexion as Utilisateur).subscribe( res => {
-      this.utilisateurs=res;
-      if(this.utilisateurs.length==0){
-        console.log("Utilisateur non trouvé")
-      }else {
-        localStorage.setItem('currentUser', JSON.stringify(this.utilisateurs));
-      }  
-    }); */
-
     this.utilisateurService.login(connexion as Utilisateur).pipe(first()).subscribe(
       res => {
         console.log("from CONNEXION")

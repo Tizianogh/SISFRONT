@@ -4,5 +4,6 @@ export interface Article {
     libelle: string,
     prix: number,
     uuidCategorie: string,
-    uuidMarque: string
+    uuidMarque: string,
+    photo: string
 }
