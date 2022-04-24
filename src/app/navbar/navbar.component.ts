@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {UtilisateurService} from "../services/utilisateur/utilisateur.service";
 import {Utilisateur} from "../models/utilisateur";
 import {PanierService} from "../services/pannier/panier.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: UtilisateurService, private panierService: PanierService) {
+    private authenticationService: UtilisateurService, private panierService: PanierService, private toastr: ToastrService) {
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
@@ -32,6 +33,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+    this.toastr.success("Vous vous êtes déconnecté.");
     this.router.navigate(['']);
   }
 

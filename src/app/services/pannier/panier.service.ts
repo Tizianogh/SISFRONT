@@ -42,9 +42,10 @@ export class PanierService {
   suppressionArticlePanier(produit: Article) {
     this.panierList.map((prod: any, indice: any) => {
       if (produit.uuidArticle === prod.uuidArticle) {
-        this.panierList.slice(indice, 1);
+        this.panierList.splice(indice, 1);
       }
     })
+    this.produitList.next(this.panierList);
   }
 
   suppressionComplete() {
