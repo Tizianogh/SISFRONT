@@ -1,0 +1,14 @@
+<div class="card h-100">
+  <img class="card-img-top" src="{{article.photo}}" alt="..."/>
+  <div class="card-body p-4">
+    <div class="text-center">
+      <h5 class="fw-bolder">{{article.titre}}</h5>
+      {{article.prix}} €
+    </div>
+  </div>
+  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="addPanier(article)">Add
+      to cart</a></div>
+  </div>
+</div>
+

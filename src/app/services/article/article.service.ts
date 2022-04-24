@@ -18,7 +18,12 @@ export class ArticleService {
     tap(console.log),
     catchError(this.handleError)
   );
-  
+
+  getArticles$ = () =>  <Observable<Array<Article>>>this.http.get<Array<Article>>(`${this.apiUrl}/list`).pipe(
+    tap(console.log),
+    catchError(this.handleError)
+  );
+
   createArticle$ = (article: Article) => <Observable<Article>>  this.http.post<Article>(`${this.apiUrl}/add`, article)
   .pipe(
     tap(console.log),

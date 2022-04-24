@@ -15,7 +15,6 @@ import {ToastrModule} from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PanierComponent } from './panier/panier.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +23,7 @@ import { PanierComponent } from './panier/panier.component';
     ConnexionComponent,
     CreateArticleComponent,
     PanierComponent,
+
   ],
   imports: [
     HttpClientModule,
