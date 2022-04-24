@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: UtilisateurService){
+    private authenticationService: UtilisateurService) {
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }

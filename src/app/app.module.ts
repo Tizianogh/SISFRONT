@@ -13,7 +13,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {CreateArticleComponent} from './create-article/create-article.component';
 import {ToastrModule} from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PannierComponent } from './pannier/pannier.component';
 import { PanierComponent } from './panier/panier.component';
 
 
@@ -24,7 +23,6 @@ import { PanierComponent } from './panier/panier.component';
     HomeComponent,
     ConnexionComponent,
     CreateArticleComponent,
-    PannierComponent,
     PanierComponent,
   ],
   imports: [
