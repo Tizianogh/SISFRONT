@@ -9,7 +9,7 @@ import {Article} from "../models/article";
 })
 export class PanierComponent implements OnInit {
   // @ts-ignore
-  produits: Article = [];
+  produits: any = [];
   sommetotal: number = 0
 
   constructor(private panierService: PanierService) {

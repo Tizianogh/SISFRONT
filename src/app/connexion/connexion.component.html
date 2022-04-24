@@ -1,24 +1,26 @@
-<p>connexion works!</p>
-<form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
+<h1 class="text-center">Connexion</h1>
+<br/>
+<div class="container square-box d-flex justify-content-center align-items-center">
+  <form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
     <div class="row mb-3" style="width:500px">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" name="email" #email="ngModel" ngModel email
-                required>
-            <div class="alert alert-danger" *ngIf="email.errors?.['required'] && email.touched" role="alert">Email required!
-            </div>
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail3" name="email" #email="ngModel" ngModel email
+               required>
+        <div class="alert alert-danger" *ngIf="email.errors?.['required'] && email.touched" role="alert">Email required!
         </div>
+      </div>
     </div>
     <div class="row mb-3" style="width:500px">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3" name="pass" #pass="ngModel" ngModel required
-                minlength="8">
-            <div class="alertalert-danger" *ngIf="messageError" role="alert">{{messageError}}</div>
-            <div class="alert alert-danger" *ngIf="pass.errors?.['minlength'] && pass.touched" role="alert">
-                minlength required!
-            </div>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3" name="pass" #pass="ngModel" ngModel required
+               minlength="8">
+        <div class="alertalert-danger" *ngIf="messageError" role="alert">{{messageError}}</div>
+        <div class="alert alert-danger" *ngIf="pass.errors?.['minlength'] && pass.touched" role="alert">
+          minlength required!
         </div>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="connexionForm.invalid">Log in</button>
-</form>
+  </form>

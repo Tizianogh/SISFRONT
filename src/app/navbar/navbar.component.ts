@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UtilisateurService} from "../services/utilisateur/utilisateur.service";
 import {Utilisateur} from "../models/utilisateur";
+import {PanierService} from "../services/pannier/panier.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,21 +11,32 @@ import {Utilisateur} from "../models/utilisateur";
 })
 export class NavbarComponent implements OnInit {
   currentUser: Utilisateur | undefined;
+  nbProduits: number = 0;
+
+  connected: boolean = false;
 
   constructor(
     private router: Router,
-    private authenticationService: UtilisateurService) {
+    private authenticationService: UtilisateurService, private panierService: PanierService) {
     {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
   }
 
   ngOnInit(): void {
+    this.panierService.getProduits().subscribe(value => {
+      //@ts-ignore
+      this.nbProduits = value.length;
+    })
   }
-
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['']);
+  }
+
+  isConnected() {
+    this.connected = this.authenticationService.isLoggedIn();
+    return this.connected;
   }
 }
