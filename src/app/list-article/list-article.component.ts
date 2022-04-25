@@ -21,7 +21,7 @@ export class ListArticleComponent implements OnInit {
       this.listArticle = res;
       this.listArticle.map(value => value.photo = this.randomImage())
       this.listArticle.forEach(value => {
-        Object.assign(value, {quantité: 1, prix: value.prix})
+        Object.assign(value, {quantite: 1, prix: value.prix})
       })
     })
   }

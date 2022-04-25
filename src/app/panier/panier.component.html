@@ -1,26 +1,38 @@
 <h1 class="text-center">PANIER</h1>
 <br/>
-
-<section class="py-5">
-  <div class="container px-4 px-lg-5 mt-5">
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div *ngFor="let article of produits" class="col mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="{{article.photo}}" alt="..."/>
-          <div class="card-body p-4">
-            <div class="text-center">
-              <h5 class="fw-bolder">{{article.titre}}</h5>
-              {{article.prix}} €
-            </div>
-          </div>
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="supprimerArticle(article)">Add
-              to cart</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div>TOT : {{sommetotal}} €</div>
+<div class="container square-box d-flex justify-content-center align-items-center">
+  <table class="table" data-show-footer="true">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Quantité</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let article of produits;  let index = index; ">
+      <th scope="row">{{index + 1}}</th>
+      <td>{{article.titre}}</td>
+      <td><img style="width: 10%;" src="{{article.photo}}"></td>
+      <td>{{article.prix}}</td>
+      <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event)"></td>
+      <td>
+        <button (click)="supprimerArticle(article)"><i class="fa-solid fa-trash-arrow-up"></i></button>
+      </td>
+    </tr>
+    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+        data-footer-formatter="TotalFormatter">  {{sommetotal |  currency:'EUR':'symbol':'3.2-2'}}
+    </th>
+    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+        data-footer-formatter="TotalFormatter">
+      <button (click)="suppressionCompleteArticle()"><i class="fa-solid fa-recycle"></i></button>
+    </th>
+    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+        data-footer-formatter="TotalFormatter">
+      <button><i class="fa-solid fa-cart-shopping"></i></button>
+    </th>
+    </tbody>
+  </table>
+</div>

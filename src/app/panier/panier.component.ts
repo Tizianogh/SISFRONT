@@ -11,6 +11,9 @@ export class PanierComponent implements OnInit {
   // @ts-ignore
   produits: any = [];
   sommetotal: number = 0
+  values = '';
+
+  //@ts-ignore
 
   constructor(private panierService: PanierService) {
   }
@@ -28,5 +31,10 @@ export class PanierComponent implements OnInit {
 
   suppressionCompleteArticle() {
     this.panierService.suppressionComplete();
+  }
+
+
+  onKey(event: any) { // without type info
+    this.sommetotal = this.panierService.getTotalPrix() * event.target.value;
   }
 }

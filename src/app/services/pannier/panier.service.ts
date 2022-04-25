@@ -34,7 +34,7 @@ export class PanierService {
   getTotalPrix(): number {
     let total = 0;
     this.panierList.map((p: any) => {
-      total += p.prix;
+      total += p.prix * p.quantite;
     })
     return total;
   }
