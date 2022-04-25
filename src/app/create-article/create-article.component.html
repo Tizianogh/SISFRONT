@@ -31,6 +31,15 @@
       <div *ngIf="f.prix.errors.min">Le prix doit être égale à au moins 1</div>
     </div>
     <div class="mb-3">
+      <label for="idUrlImage">URL Image</label>
+      <input type="text" class="form-control" id="idUrlImage" placeholder="URL Image" formControlName="image"
+             [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+    </div>
+    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+      <div *ngIf="f.image.errors.required">L'url est requis</div>
+      <div *ngIf="f.image.errors.minlength">L'url doit avoit au minimum 5 caractères</div>
+    </div>
+    <div class="mb-3">
       <label for="idCategory">Type</label>
       <select id="idCategory" class="form-select" formControlName="categorie"
               [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }">

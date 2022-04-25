@@ -16,7 +16,7 @@
       <tr *ngFor="let article of produits;  let index = index; ">
         <th scope="row">{{index + 1}}</th>
         <td>{{article.titre}}</td>
-        <td><img style="width: 10%;" src="{{article.photo}}"></td>
+        <td><img style="width: 10%;" src="{{article.urlImage}}"></td>
         <td>{{article.prix}}</td>
         <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event)"></td>
         <td>
@@ -32,7 +32,7 @@
       </th>
       <th data-field="Amount" data-searchable="true" data-class="tdDetails"
           data-footer-formatter="TotalFormatter">
-        <button><i class="fa-solid fa-cart-shopping"></i></button>
+        <button (click)="purchase(produits)"><i class="fa-solid fa-cart-shopping"></i></button>
       </th>
       </tbody>
     </table>

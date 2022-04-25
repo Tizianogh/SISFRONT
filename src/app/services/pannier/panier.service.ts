@@ -1,18 +1,42 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Article} from "../../models/article";
+import {Commande} from 'src/app/models/commande';
+import {environment} from "../../../environments/environment";
+import {Ligne} from "../../models/ligne";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanierService {
+  private readonly apiUrl = `${environment.APIEndpoint}/commandes`
+
   panierList: any = [];
   // @ts-ignore
   produitList = new BehaviorSubject<Article>([]);
 
   constructor(private http: HttpClient) {
   }
+
+
+  purchase$ = (commande: Commande) => <Observable<Commande>>this.http.post<Commande>(`${this.apiUrl}/add`, commande)
+    .pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+
+  addItemsToOrder$ = (ligne: Ligne) => <Observable<Ligne>>this.http.post<Ligne>(`${this.apiUrl}/contenue/add`, ligne)
+    .pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log(error)
+    return throwError(`Une erreur est survenue`);
+  };
+
 
   getProduits() {
     return this.produitList.asObservable();
@@ -25,7 +49,19 @@ export class PanierService {
   }
 
   ajoutPanier(produit: Article) {
-    this.panierList.push(produit);
+    let exist = false;
+    for (let i in this.panierList) {
+      if (this.panierList[i].uuidArticle === produit.uuidArticle) {
+        this.panierList[i].quantite++;
+        exist = true;
+        break;
+      }
+    }
+
+    if (!exist) {
+      this.panierList.push(produit);
+    }
+
     this.produitList.next(this.panierList);
     this.getTotalPrix();
     console.log(this.panierList)

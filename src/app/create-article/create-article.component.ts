@@ -32,6 +32,7 @@ export class CreateArticleComponent implements OnInit {
       titre: ['', [Validators.required, Validators.required, Validators.minLength(5)]],
       libelle: ['', [Validators.required, Validators.required, Validators.minLength(5)]],
       prix: ['', [Validators.required, Validators.min(1)]],
+      image: ['', [Validators.required, Validators.minLength(5)]],
       categorie: ['', Validators.required],
       marque: ['', Validators.required]
     })
@@ -57,7 +58,8 @@ export class CreateArticleComponent implements OnInit {
       libelle: this.articleForm.value.libelle,
       prix: this.articleForm.value.prix,
       uuidCategorie: this.articleForm.value.categorie,
-      uuidMarque: this.articleForm.value.marque
+      uuidMarque: this.articleForm.value.marque,
+      urlImage: this.articleForm.value.image
     }
 
     this.articleService.createArticle$(article).subscribe(article => {

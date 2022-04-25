@@ -15,7 +15,7 @@
       <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-10">
         <input type="password" class="form-control" id="inputPassword3" name="pass" #pass="ngModel" ngModel required
-               minlength="8">
+               minlength="5">
         <div class="alertalert-danger" *ngIf="messageError" role="alert">{{messageError}}</div>
         <div class="alert alert-danger" *ngIf="pass.errors?.['minlength'] && pass.touched" role="alert">
           minlength required!
