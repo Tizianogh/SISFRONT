@@ -1,38 +1,45 @@
 <h1 class="text-center">PANIER</h1>
 <br/>
 <div class="container square-box d-flex justify-content-center align-items-center">
-  <table class="table" data-show-footer="true">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Titre</th>
-      <th scope="col">Photo</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Quantité</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let article of produits;  let index = index; ">
-      <th scope="row">{{index + 1}}</th>
-      <td>{{article.titre}}</td>
-      <td><img style="width: 10%;" src="{{article.photo}}"></td>
-      <td>{{article.prix}}</td>
-      <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event)"></td>
-      <td>
-        <button (click)="supprimerArticle(article)"><i class="fa-solid fa-trash-arrow-up"></i></button>
-      </td>
-    </tr>
-    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
-        data-footer-formatter="TotalFormatter">  {{sommetotal |  currency:'EUR':'symbol':'3.2-2'}}
-    </th>
-    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
-        data-footer-formatter="TotalFormatter">
-      <button (click)="suppressionCompleteArticle()"><i class="fa-solid fa-recycle"></i></button>
-    </th>
-    <th data-field="Amount" data-searchable="true" data-class="tdDetails"
-        data-footer-formatter="TotalFormatter">
-      <button><i class="fa-solid fa-cart-shopping"></i></button>
-    </th>
-    </tbody>
-  </table>
+  <ng-container *ngIf="produits.length!==0">
+    <table class="table" data-show-footer="true">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let article of produits;  let index = index; ">
+        <th scope="row">{{index + 1}}</th>
+        <td>{{article.titre}}</td>
+        <td><img style="width: 10%;" src="{{article.photo}}"></td>
+        <td>{{article.prix}}</td>
+        <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event)"></td>
+        <td>
+          <button (click)="supprimerArticle(article)"><i class="fa-solid fa-trash-arrow-up"></i></button>
+        </td>
+      </tr>
+      <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+          data-footer-formatter="TotalFormatter">  {{sommetotal |  currency:'EUR':'symbol':'3.2-2'}}
+      </th>
+      <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+          data-footer-formatter="TotalFormatter">
+        <button (click)="suppressionCompleteArticle()"><i class="fa-solid fa-recycle"></i></button>
+      </th>
+      <th data-field="Amount" data-searchable="true" data-class="tdDetails"
+          data-footer-formatter="TotalFormatter">
+        <button><i class="fa-solid fa-cart-shopping"></i></button>
+      </th>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="produits.length===0">
+    <div class="container square-box d-flex justify-content-center align-items-center">
+      <h2>VOTRE PANIER EST VIDE 😒</h2>
+    </div>
+  </ng-container>
 </div>
