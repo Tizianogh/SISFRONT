@@ -49,7 +49,7 @@ export class PanierService {
   }
 
   ajoutPanier(produit: Article) {
-    let exist = false;
+    /*let exist = false;
     for (let i in this.panierList) {
       if (this.panierList[i].uuidArticle === produit.uuidArticle) {
         this.panierList[i].quantite++;
@@ -64,7 +64,20 @@ export class PanierService {
 
     this.produitList.next(this.panierList);
     this.getTotalPrix();
-    console.log(this.panierList)
+    console.log(this.panierList) /*
+     */
+    let foundItem = this.panierList.find((item: any) => item.uuidArticle === produit.uuidArticle);
+    if (foundItem) {
+      foundItem.quantite++;
+      return;
+    }
+
+    if (!foundItem) {
+      this.panierList.push(produit);
+    }
+
+    this.produitList.next(this.panierList)
+    this.getTotalPrix();
   }
 
   getTotalPrix(): number {

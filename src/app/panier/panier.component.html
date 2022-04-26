@@ -18,7 +18,7 @@
         <td>{{article.titre}}</td>
         <td><img style="width: 10%;" src="{{article.urlImage}}"></td>
         <td>{{article.prix}}</td>
-        <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event)"></td>
+        <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}" (change)="onKey($event, article)"></td>
         <td>
           <button (click)="supprimerArticle(article)"><i class="fa-solid fa-trash-arrow-up"></i></button>
         </td>

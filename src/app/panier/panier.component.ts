@@ -21,7 +21,7 @@ export class PanierComponent implements OnInit {
 
   private dataSubject = new BehaviorSubject<any>(null);
 
-  //@ts-ignore
+
   constructor(private panierService: PanierService, private utilisateurService: UtilisateurService) {
   }
 
@@ -41,9 +41,16 @@ export class PanierComponent implements OnInit {
   }
 
 
-  onKey(event: any) {
-    this.sommetotal = this.panierService.getTotalPrix() * event.target.value;
+  onKey(event: any,produit:any) {
+    let somme = 0;
+    this.produits.forEach((prod: any) => {
+      if(produit.uuidArticle=prod.uuidArticle){
+        produit.quantite = event.target.value;
+      }
+      this.sommetotal=this.panierService.getTotalPrix();
+    })
   }
+
 
   purchase(listProducts: any[]) {
     //@ts-ignore
@@ -56,8 +63,6 @@ export class PanierComponent implements OnInit {
     }
 
     this.panierService.purchase$(order).subscribe(value => {
-      console.log(`HEREEEEE ${JSON.stringify(value)}`)
-      console.log(value.uuidCommande)
       //@ts-ignore
       let ligne: Ligne = {
         uuidCommande: value.uuidCommande,
@@ -68,7 +73,6 @@ export class PanierComponent implements OnInit {
       this.panierService.addItemsToOrder$(ligne).subscribe(value1 => {
         this.dataSubject.next(value1);
       })
-      console.log(value)
     })
   }
 }

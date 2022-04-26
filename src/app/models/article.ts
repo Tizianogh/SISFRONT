@@ -6,5 +6,4 @@ export interface Article {
   uuidCategorie: string,
   uuidMarque: string,
   urlImage: string,
-  quantite: number
 }

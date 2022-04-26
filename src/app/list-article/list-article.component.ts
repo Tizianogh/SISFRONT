@@ -18,6 +18,10 @@ export class ListArticleComponent implements OnInit {
   ngOnInit(): void {
     this.articleService.getArticleByCategory$(this.router.url.substring(1)).subscribe(res => {
       this.listArticle = res;
+
+      this.listArticle.forEach(value => {
+        Object.assign(value, {quantite: 1})
+      })
     })
   }
 
