@@ -48,5 +48,13 @@ body, input, select, textarea {
   .item-content {
     margin: auto;
   }
-  
-  
+  #carouselExampleControls{
+    height: 75%;
+    width: 95%;
+    margin: auto;
+    box-shadow: 7px 4px 7px 5px grey;
+    margin-bottom: 2%;
+  }
+ .card mb-3{
+   margin-left: 20%;
+ }

@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -68,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "HighTechStore:build:production"
+              "browserTarget": "HighTechStore:build:production",
             },
             "development": {
-              "browserTarget": "HighTechStore:build:development"
+              "browserTarget": "HighTechStore:build:development",
             }
           },
           "defaultConfiguration": "development"

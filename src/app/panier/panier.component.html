@@ -1,0 +1,49 @@
+<h1 class="text-center">PANIER</h1>
+<br/>
+<div class="container">
+  <ng-container *ngIf="produits.length!==0">
+    <div class="row">
+      <table class="table" data-show-footer="true">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Quantité</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let article of produits;  let index = index; ">
+            <th scope="row">{{index + 1}}</th>
+            <td>{{article.titre}}</td>
+            <td><img style="width: 10%;" src="{{article.urlImage}}"></td>
+            <td>{{article.prix}}</td>
+            <td><input style="width: 50px;" type="number" min="1" max="10" value="{{article.quantite}}"
+                       (change)="onKey($event, article)"></td>
+            <td>
+              <button class="btn btn-danger btn-sm delete" (click)="supprimerArticle(article)"><i class="fa-solid fa-trash-arrow-up"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col">
+      <h3>{{sommetotal |  currency:'EUR':'symbol'}}</h3>
+      </div>
+      <div class="col-lg-4">
+        <button class="btn btn-primary btn-sm" (click)="suppressionCompleteArticle()"><i class="fa-solid fa-recycle"> Vider votre panier</i></button>
+      </div>
+      <div class="col-lg-4">
+        <button class="btn btn-primary btn-sm" (click)="purchase(produits)"><i class="fa-solid fa-cart-shopping"> Valider votre panier</i></button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="produits.length===0">
+    <div class="container square-box d-flex justify-content-center align-items-center">
+      <h2>VOTRE PANIER EST VIDE 😒</h2>
+    </div>
+  </ng-container>
+</div>

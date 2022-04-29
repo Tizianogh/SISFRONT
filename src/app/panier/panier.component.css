@@ -1,0 +1,9 @@
+.btn {
+  font-size: small;
+  white-space:nowrap;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+.delete{
+  padding: 2px 5px;
+}
