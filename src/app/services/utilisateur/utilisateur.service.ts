@@ -43,6 +43,11 @@ export class UtilisateurService {
     return this.currentUserSubject.value;
   }
 
+  public get currentUserRole(): any {
+    // @ts-ignore
+    return this.currentUserSubject.value[0].roleLibelle;
+  }
+
   public isLoggedIn() {
     //@ts-ignore
     if (typeof this.currentUserValue !== 'undefined' && this.currentUserValue !== null) {

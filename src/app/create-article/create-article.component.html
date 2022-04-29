@@ -44,7 +44,7 @@
       <select id="idCategory" class="form-select" formControlName="categorie"
               [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }">
         <option value=""></option>
-        <option *ngFor="let category of categories " value={{category.uuidCategorie}}> {{category.libelle}}</option>
+        <option *ngFor="let category of categories" value={{category.uuidCategorie}}> {{category.libelle}}</option>
       </select>
       <div *ngIf="submitted && f.categorie.errors" class="invalid-feedback">
         <div *ngIf="f.categorie.errors.required">La catégorie est requise</div>

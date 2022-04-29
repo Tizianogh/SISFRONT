@@ -7,6 +7,8 @@ import {UtilisateurService} from "../services/utilisateur/utilisateur.service";
 import {Ligne} from "../models/ligne";
 //@ts-ignore
 import {v4 as uuidv4} from 'uuid';
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-panier',
@@ -22,7 +24,7 @@ export class PanierComponent implements OnInit {
   private dataSubject = new BehaviorSubject<any>(null);
 
 
-  constructor(private panierService: PanierService, private utilisateurService: UtilisateurService) {
+  constructor(private panierService: PanierService, private utilisateurService: UtilisateurService, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -41,18 +43,23 @@ export class PanierComponent implements OnInit {
   }
 
 
-  onKey(event: any,produit:any) {
+  onKey(event: any, produit: any) {
     let somme = 0;
     this.produits.forEach((prod: any) => {
-      if(produit.uuidArticle=prod.uuidArticle){
+      if (produit.uuidArticle = prod.uuidArticle) {
         produit.quantite = event.target.value;
       }
-      this.sommetotal=this.panierService.getTotalPrix();
+      this.sommetotal = this.panierService.getTotalPrix();
     })
   }
 
 
   purchase(listProducts: any[]) {
+    if (!this.utilisateurService.isLoggedIn()) {
+      this.toastr.error("Vous devez être connecté pour pouvoir terminer votre commande!")
+      this.router.navigate(['/connexion'])
+      return;
+    }
     //@ts-ignore
     let order: Commande = {
       uuidCommande: uuidv4(),
@@ -72,6 +79,9 @@ export class PanierComponent implements OnInit {
 
       this.panierService.addItemsToOrder$(ligne).subscribe(value1 => {
         this.dataSubject.next(value1);
+        this.toastr.success("Votre pannier a bien été validé!");
+        this.router.navigate(['']);
+        this.panierService.suppressionComplete();
       })
     })
   }

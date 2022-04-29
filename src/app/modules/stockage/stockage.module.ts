@@ -2,19 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StockageRoutingModule } from './stockage-routing.module';
-import { DisqueDurComponent } from './disque-dur/disque-dur.component';
-import { CleUsbComponent } from './cle-usb/cle-usb.component';
-import { AccessoiresStockageComponent } from './accessoires-stockage/accessoires-stockage.component';
+import { StockageHomeComponent } from './stockage-home/stockage-home.component';
+import {StockageUsbComponent} from "./stockage-usb/stockage-usb.component";
+import {StockageHddComponent} from "./stockage-hdd/stockage-hdd.component";
+import {StockageAccessoireComponent} from "./stockage-accessoire/stockage-accessoire.component";
+import {ComputerModule} from "../computer/computer.module";
 
 @NgModule({
   declarations: [
-    DisqueDurComponent,
-    CleUsbComponent,
-    AccessoiresStockageComponent,
+    StockageUsbComponent,
+    StockageHddComponent,
+    StockageAccessoireComponent,
+    StockageHomeComponent,
      ],
   imports: [
     CommonModule,
-    StockageRoutingModule
+    StockageRoutingModule,
+    ComputerModule
   ]
 })
 export class StockageModule { }

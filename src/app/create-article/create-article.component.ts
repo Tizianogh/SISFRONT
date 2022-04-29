@@ -65,7 +65,7 @@ export class CreateArticleComponent implements OnInit {
     this.articleService.createArticle$(article).subscribe(article => {
       this.dataSubject.next(article);
       this.showSucces();
-      this.router.navigate(['/pc-fixe'])
+      this.onReset()
     }, error => (this.showError()));
   }
 

@@ -1,61 +1,41 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Home</a>
-    <a *ngIf="!isConnected()" class="navbar-brand" routerLink="/connexion">Connexion</a>
-    <a class="navbar-brand" routerLink="/create-article">Creer article</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">
-            Ordinateurs</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/pc-portable">PC portable</a></li>
-            <li><a class="dropdown-item" routerLink="/pc-fixe">PC de Bureau</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" routerLink="/accessoires-pc">Accessoires</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">
-            Téléphonies</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/smartphone">Smartphone</a></li>
-            <li><a class="dropdown-item" routerLink="/tel-fixe">Tel Fixe</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" routerLink="/accessoires-phones">Accessoires</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">
-            Stockage</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/disque-dur">Disque dur</a></li>
-            <li><a class="dropdown-item" routerLink="/cle-usb">Clé USB</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" routerLink="/accessoires-stockage">Accessoires</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button *ngIf="isConnected()" class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
-      <button routerLink="panier" class="btn btn-primary">
-        <i class="fa-solid fa-cart-arrow-down"></i>
-        <div class="badge bg-danger">
-          <ng-container *ngIf="nbProduits!==0"> {{nbProduits}}</ng-container>
-        </div>
-      </button>
-    </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-nowrap" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-nowrap" routerLink="/create-article">Creer article</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-nowrap" routerLink="/ordinateur">Ordinateur</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-nowrap" routerLink="/telephone">Téléphone</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-nowrap" routerLink="/stockage">Stockage</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li>
+        <button *ngIf="isConnected()" class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logout()">Déconnexion</button>
+      </li>
+      <li >
+        <button *ngIf="!isConnected()" class="btn btn-success my-2 my-sm-0" routerLink="/connexion">Connexion</button>
+      </li>
+      <li>
+        <button routerLink="panier" class="btn btn-primary panier"><i class="fa-solid fa-cart-arrow-down"></i>
+          <div class="badge bg-danger notification">
+            <ng-container *ngIf="nbProduits!==0"> {{nbProduits}}</ng-container>
+          </div>
+        </button>
+      </li>
+    </ul>
   </div>
 </nav>
+
+
