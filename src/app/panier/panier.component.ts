@@ -82,7 +82,15 @@ export class PanierComponent implements OnInit {
         this.toastr.success("Votre pannier a bien été validé!");
         this.router.navigate(['']);
         this.panierService.suppressionComplete();
+      }, error => {
+        this.showError(error)
       })
     })
+  }
+
+
+  showError(reason: string) {
+    //@ts-ignore
+    this.toastr.error(`Une erreur est survenue : ${reason}`)
   }
 }

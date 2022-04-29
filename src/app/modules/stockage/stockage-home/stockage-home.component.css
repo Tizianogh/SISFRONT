@@ -1,0 +1,16 @@
+.card{
+  width: 300px;
+  margin-top: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.card-title{
+  margin-top: 20px;
+  text-align: center;
+}
+img{
+  margin-left: -25px;
+  margin-top: -25px;
+  width: calc( 100% + 50px);
+  object-fit: contain;
+}
