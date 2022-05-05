@@ -16,13 +16,23 @@ export class ListArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.articleService.getArticleByCategory$(this.router.url.split("/")[2]).subscribe(res => {
-      this.listArticle = res;
+    if (this.router.url.split("/")[2] == null) {
+      this.articleService.getArticles$().subscribe(value => {
+        this.listArticle = value;
 
-      this.listArticle.forEach(value => {
-        Object.assign(value, {quantite: 1})
+        this.listArticle.forEach(value => {
+          Object.assign(value, {quantite: 1})
+        })
       })
-    })
+    } else {
+      this.articleService.getArticleByCategory$(this.router.url.split("/")[2]).subscribe(res => {
+        this.listArticle = res;
+
+        this.listArticle.forEach(value => {
+          Object.assign(value, {quantite: 1})
+        })
+      })
+    }
   }
 
   ajoutArticlePannier(produit: Article) {
