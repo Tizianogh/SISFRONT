@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PanierComponent } from './panier/panier.component';
 import { PcHomeComponent } from './modules/computer/pc-home/pc-home.component';
 import {CreateArticleGuardGuard} from "./guard/Article/create-article-guard.guard";
+import { GestionComponent } from './gestion/gestion.component';
+import { UpdateArticleComponent } from './update-article/update-article.component';
+import { DetailsArticleComponent } from './details-article/details-article.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import {CreateArticleGuardGuard} from "./guard/Article/create-article-guard.guar
     CreateArticleComponent,
     PanierComponent,
     PcHomeComponent,
+    GestionComponent,
+    UpdateArticleComponent,
+    DetailsArticleComponent,
   ],
   imports: [
     HttpClientModule,

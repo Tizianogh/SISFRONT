@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Article} from "../models/article";
 import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-item',
@@ -12,7 +13,7 @@ export class ArticleItemComponent implements OnInit {
   @Output() remove: EventEmitter<Article> = new EventEmitter<Article>();
   @Output() ajout: EventEmitter<Article> = new EventEmitter<Article>();
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,5 +26,9 @@ export class ArticleItemComponent implements OnInit {
   addPanier(article: Article): void {
     this.toastr.success(`Article ${article.titre} ajouté au panier.`, '',{positionClass: 'toast-bottom-left', closeButton: true});
     this.ajout.emit(article);
+  }
+
+  checkDetails(article: Article) {
+    this.router.navigate([`/details/${article.uuidArticle}`])
   }
 }

@@ -1,4 +1,4 @@
-<div class="card h-100">
+<div class="card h-100" xmlns="http://www.w3.org/1999/html">
   <img class="card-img-top" src="{{article.urlImage}}" alt="..."/>
   <div class="card-body p-4">
     <div class="text-center">
@@ -10,6 +10,7 @@
     <div class="text-center">
       <button class="btn btn-primary btn-sm"(click)="addPanier(article)"><i class="fa-solid fa-cart-arrow-down"> Ajouter au panier</i>
       </button>
+      <button (click)="checkDetails(article)"> <i class="fa-solid fa-eye"></i></button>
     </div>
   </div>
 </div>

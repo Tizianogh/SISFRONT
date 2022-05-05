@@ -1,0 +1,14 @@
+<br/>
+<h1 class="text-center">Détail article</h1>
+<br/>
+<div class="container">
+  <div *ngFor="let article of articles">
+    <u>Titre:</u>
+    <p>{{article.titre}}</p>
+    <u>Libelle:</u>
+    <p>{{article.libelle}}</p>
+    <u>prix:</u>
+    <p>{{article.prix}}</p>
+    <img src="{{article.urlImage}}">
+  </div>
+</div>

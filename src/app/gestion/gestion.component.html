@@ -1,0 +1,41 @@
+<h1 class="text-center">GESTION</h1>
+<br/>
+<div class="container">
+  <ng-container *ngIf="produits.length!==0">
+    <div class="row">
+      <table class="table" data-show-footer="true">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Prix</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of produits;  let index = index; ">
+          <th scope="row">{{index + 1}}</th>
+          <td>{{article.titre}}</td>
+          <td><img style="width: 10%;" src="{{article.urlImage}}"></td>
+          <td>{{article.prix}}</td>
+
+          <td>
+            <button class="btn btn-danger btn-sm delete" (click)="supprimerArticle(article)"><i
+              class="fa-solid fa-trash-arrow-up"></i></button>
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm delete" (click)="modifierArticle(article)"><i class="fa-solid fa-gear"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="produits.length===0">
+    <div class="container square-box d-flex justify-content-center align-items-center">
+      <h2>Aucun article disponible en base. 😒</h2>
+    </div>
+  </ng-container>
+</div>
